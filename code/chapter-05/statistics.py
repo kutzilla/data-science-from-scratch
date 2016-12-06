@@ -110,7 +110,7 @@ def correlation(x, y):
     else:
         return 0 # wenn es keine Streuung gibt, ist die Korrelation gleich 0
 
-def make_friend_counts_histogram():
+def make_num_friends_histogram(num_friends):
     friend_counts = Counter(num_friends)
     xs = range(101)
     ys = [friend_counts[x] for x in xs]
@@ -119,6 +119,27 @@ def make_friend_counts_histogram():
     plt.title("Histogram of Friend Counts")
     plt.xlabel("# of friends")
     plt.ylabel("# of people")
+    plt.show()
+
+def make_daily_minutes_histogram(daily_minutes):
+    daily_minutes_clean = [int(i) for i in daily_minutes]
+    dm_counts = Counter(daily_minutes_clean)
+    xs = range(101)
+    ys = [dm_counts[x] for x in xs]
+    plt.bar(xs, ys)
+    plt.axis([0, 101, 0, 25])
+    plt.title("Histogram of Friend Counts")
+    plt.xlabel("# of daily minutes")
+    plt.ylabel("# of people")
+    plt.show()
+
+def make_friends_daily_minutes_correlation(x, y):
+    for friend_count, minute_count in zip(x, y):
+        plt.scatter(x, y)
+
+    plt.title("Daily Minutes vs. Number of Friends")
+    plt.xlabel("# of friends")
+    plt.ylabel("daily minutes spent on the site")
     plt.show()
 
 num_points = len(num_friends)
@@ -157,3 +178,8 @@ num_friends_good = [x for i, x in enumerate(num_friends) if i != outlier]
 daily_minutes_good = [x for i, x in enumerate(daily_minutes) if i != outlier]
 
 print "Korrelation (o. Ausr.):", correlation(num_friends_good, daily_minutes_good)
+
+make_num_friends_histogram(num_friends)
+make_daily_minutes_histogram(daily_minutes)
+make_friends_daily_minutes_correlation(num_friends, daily_minutes)
+make_friends_daily_minutes_correlation(num_friends_good, daily_minutes_good)
