@@ -1,0 +1,4 @@
+#Hello World!
+#Hello Python
+Das ist eine normale Textzeile!
+#Data Science
