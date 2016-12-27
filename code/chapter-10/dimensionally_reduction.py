@@ -110,3 +110,15 @@ def de_mean_matrix(A):
     nr, nc = shape(A)
     columns_means, _ = scale(A)
     return make_matrix(nr, nc, lambda i, j: A[i][j] - column_means[j])
+
+def direction(w):
+    mag = magnitude(w)
+    return [w_i / mag for w_i in w]
+
+def directional_variance_i(x_i, w):
+    """Streuung der Zeile x_i in der durch w gegebenen Richtung"""
+    return dot(x_i, direction(w)) ** 2
+
+def directional_variance(X, w):
+    """Streuung der Daten in der durch w gegebenen Richtung"""
+    return sum(directional_variance_i(x_i, w) for x_i in X)
