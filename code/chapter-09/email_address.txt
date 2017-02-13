@@ -1,8 +1,0 @@
-test@gmail.com
-test@yahoo.com
-test@mail.datascientist.com
-test@gmx.de
-test@googlemail.com
-test@gmail.com
-test@hotmail.com
-test@mail.mit.edu
